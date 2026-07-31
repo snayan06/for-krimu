@@ -165,6 +165,31 @@ h1 { font-size: clamp(42px, 12vw, 78px); line-height: .97; }
 h2 { font-size: clamp(36px, 9.5vw, 68px); line-height: 1.02; }
 h1 em, h2 em { color: var(--rose); font-weight: 400; }
 
+.name-line {
+  display: inline-flex;
+  align-items: center;
+  gap: .16em;
+  white-space: nowrap;
+}
+
+.name-heart {
+  position: relative;
+  display: inline-block;
+  color: var(--rose);
+  font-size: .58em;
+  line-height: 1;
+  filter: drop-shadow(0 5px 9px rgb(189 96 117 / 18%));
+  transform: rotate(8deg) translateY(-.05em);
+}
+
+.name-heart::after {
+  content: "✦";
+  position: absolute;
+  top: -.45em;
+  right: -.38em;
+  font: .32em/1 var(--sans);
+}
+
 .intro-note,
 .chapter-heading > p:last-child,
 .final-copy > p:not(.eyebrow, .signature) {
@@ -302,7 +327,7 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
 .memory-card:nth-child(2) img { object-position: 50% 42%; }
 .memory-card:nth-child(3) img { object-position: 55% 42%; }
 .memory-card:nth-child(4) img { object-position: 50% 22%; }
-.memory-card.is-exiting { transform: translate(115%, -6%) rotate(18deg); opacity: 0; }
+.memory-card.is-exiting { transform: translateY(-4%) rotate(3deg) scale(.94); opacity: 0; }
 .story-button,
 .letter-button {
   display: flex;
@@ -371,7 +396,11 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
 .tape { position: absolute; z-index: 2; top: -15px; left: 50%; width: 94px; height: 31px; background: rgb(219 203 174 / 70%); transform: translateX(-50%) rotate(-3deg); }
 .scribble { position: absolute; right: -14px; bottom: -27px; color: var(--rose); font: 76px/1 var(--serif); transform: rotate(12deg); }
 .final-copy { max-width: 620px; margin: 0 auto; }
-.letter-button { background: transparent; color: var(--rose-dark); }
+.letter-button {
+  color: var(--paper);
+  background: var(--rose-dark);
+  animation: soft-pulse 2.8s ease-in-out infinite;
+}
 .replay-button {
   margin-top: 17px;
   padding: 7px 10px;
@@ -433,6 +462,7 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
 @keyframes screen-in { to { opacity: 1; transform: none; } }
 @keyframes screen-out { to { opacity: 0; transform: translateY(-15px); } }
 @keyframes bob { 50% { transform: translateY(-5px); } }
+@keyframes soft-pulse { 50% { box-shadow: 0 12px 34px rgb(145 66 85 / 34%); transform: translateY(-2px) scale(1.015); } }
 @keyframes float-heart { 0% { opacity: 0; transform: translate(var(--x-start), 0) scale(.6) rotate(0); } 15% { opacity: .8; } 100% { opacity: 0; transform: translate(var(--x-end), -105vh) scale(1.4) rotate(25deg); } }
 @keyframes confetti-fall { to { transform: translate(var(--drift), 105vh) rotate(var(--spin)); } }
 
