@@ -1,4 +1,4 @@
-# Nayan & Krimu — Girlfriend's Day
+# Krimu, My Favourite Place ♡
 
 A small, cutesy Girlfriend's Day surprise made for Krimu by Nayan. The site is designed as a reel-like experience with their own photos and is ready to be hosted separately on GitHub Pages.
 
