@@ -406,6 +406,24 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
 .final-copy { max-width: 620px; margin: 0 auto; transition: opacity .38s ease, translate .38s ease; }
 .finale.is-opening-letter .final-photo-wrap { opacity: .5; filter: blur(1.5px); transform: rotate(0) scale(.95); }
 .finale.is-opening-letter .final-copy { opacity: .55; translate: 0 8px; }
+.song-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 9px 14px;
+  border: 1px solid rgb(145 66 85 / 24%);
+  border-radius: 999px;
+  color: var(--rose-dark);
+  background: rgb(255 253 248 / 68%);
+  box-shadow: 0 6px 18px rgb(121 55 70 / 9%);
+  font: 600 12px/1.2 var(--sans);
+  letter-spacing: .02em;
+  text-decoration: none;
+  transition: transform .2s ease, background .2s ease;
+}
+.song-link:hover { background: var(--paper); transform: translateY(-2px); }
+.song-link + .letter-button { margin-top: 14px; }
 .letter-button {
   color: var(--paper);
   background: var(--rose-dark);
@@ -548,8 +566,8 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
   .reason-card { min-height: 218px; padding: 51px 12px 22px; }
   .reason-number { top: 18px; left: 19px; }
   .reason-copy { max-width: 145px; font-size: 15px; }
-  .finale { gap: 28px; padding-top: 82px; padding-bottom: 36px; }
-  .final-photo-wrap { width: min(70vw, 300px); padding: 9px 9px 34px; }
+  .finale { gap: 28px; padding-top: 82px; padding-bottom: 24px; }
+  .final-photo-wrap { width: min(66vw, 280px); padding: 9px 9px 34px; }
   .final-copy h2 { font-size: 38px; }
   .signature { margin-top: 20px; }
   .replay-button { margin-top: 12px; }
