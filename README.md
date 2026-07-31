@@ -2,6 +2,8 @@
 
 A small, cutesy Girlfriend's Day surprise made for Krimu by Nayan. The site is designed as a reel-like experience with their own photos and is ready to be hosted separately on GitHub Pages.
 
+**Live site:** <https://snayan06.github.io/girlfriends-day/>
+
 ## Preview locally
 
 From this folder, run:
@@ -14,31 +16,28 @@ Then open [http://localhost:8000](http://localhost:8000). Stop the preview with 
 
 Using a local server is recommended instead of double-clicking `index.html`, because browser behavior can differ for files opened directly from disk.
 
-## Publish on GitHub Pages
+## Publish updates
 
-Nothing is published automatically. When the final photos and wording are approved:
+The site is published from the `main` branch on GitHub Pages. To publish future approved changes:
 
-1. On GitHub, create a new **public, empty** repository named `girlfriends-day` under the `snayan06` account. Do not add a README, `.gitignore`, or license during repository creation.
-2. In Terminal, open this folder.
-3. Review the deployment plan without making Git or GitHub changes:
+1. In Terminal, open this folder.
+2. Review the deployment plan without making Git or GitHub changes:
 
    ```bash
    ./deploy.sh
    ```
 
-4. When ready to publish, explicitly run:
+3. When ready to publish, explicitly run:
 
    ```bash
    ./deploy.sh --execute
    ```
 
-5. In the repository's **Settings → Pages**, choose **Deploy from a branch**, then select `main` and `/ (root)`.
-
-After GitHub Pages finishes deploying, the expected address is:
+After GitHub Pages finishes deploying, the address is:
 
 <https://snayan06.github.io/girlfriends-day/>
 
-If GitHub asks you to sign in during the push, use the account that owns `snayan06/girlfriends-day`.
+If GitHub asks you to sign in during the push, use the `snayan06` account.
 
 ## Files expected by deployment
 
