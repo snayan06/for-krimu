@@ -301,7 +301,7 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
 .memory-card:nth-child(1) img { object-position: 50% 45%; }
 .memory-card:nth-child(2) img { object-position: 50% 42%; }
 .memory-card:nth-child(3) img { object-position: 55% 42%; }
-.memory-card:nth-child(4) img { object-position: 48% 45%; }
+.memory-card:nth-child(4) img { object-position: 50% 22%; }
 .memory-card.is-exiting { transform: translate(115%, -6%) rotate(18deg); opacity: 0; }
 .story-button,
 .letter-button {
@@ -446,6 +446,11 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
   .reason-card:nth-child(even) { margin-top: 36px; }
   .finale { grid-template-columns: .9fr 1.1fr; gap: 80px; text-align: left; }
   .final-copy > p:not(.eyebrow, .signature), .letter-button { margin-left: 0; }
+}
+
+@media (min-width: 760px) and (max-height: 460px) {
+  .screen { padding-top: 64px; padding-bottom: 24px; }
+  .sticker-bow { display: none; }
 }
 
 @media (max-width: 480px) {
