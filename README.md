@@ -2,7 +2,7 @@
 
 A small, cutesy Girlfriend's Day surprise made for Krimu by Nayan. The site is designed as a reel-like experience with their own photos and is ready to be hosted separately on GitHub Pages.
 
-**Live site:** <https://snayan06.github.io/girlfriends-day/>
+**Live site:** <https://snayan06.github.io/for-krimu/>
 
 ## Preview locally
 
@@ -35,7 +35,7 @@ The site is published from the `main` branch on GitHub Pages. To publish future 
 
 After GitHub Pages finishes deploying, the address is:
 
-<https://snayan06.github.io/girlfriends-day/>
+<https://snayan06.github.io/for-krimu/>
 
 If GitHub asks you to sign in during the push, use the `snayan06` account.
 

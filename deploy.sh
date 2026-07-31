@@ -2,8 +2,8 @@
 set -euo pipefail
 
 SITE_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
-EXPECTED_REMOTE="https://github.com/snayan06/girlfriends-day.git"
-EXPECTED_PAGE="https://snayan06.github.io/girlfriends-day/"
+EXPECTED_REMOTE="https://github.com/snayan06/for-krimu.git"
+EXPECTED_PAGE="https://snayan06.github.io/for-krimu/"
 
 usage() {
   cat <<'EOF'
@@ -11,7 +11,7 @@ Usage: ./deploy.sh [--execute]
 
 With no option, validates the site and prints the planned Git commands.
 Use --execute only after creating the empty public GitHub repository:
-  https://github.com/snayan06/girlfriends-day
+  https://github.com/snayan06/for-krimu
 
 Options:
   --execute  Initialize the local repository, commit the site, and push main.
@@ -94,7 +94,7 @@ fi
 
 if git remote get-url origin >/dev/null 2>&1; then
   current_remote="$(git remote get-url origin)"
-  if [[ "$current_remote" != "$EXPECTED_REMOTE" && "$current_remote" != "git@github.com:snayan06/girlfriends-day.git" ]]; then
+  if [[ "$current_remote" != "$EXPECTED_REMOTE" && "$current_remote" != "git@github.com:snayan06/for-krimu.git" ]]; then
     printf 'Error: origin points to an unexpected repository: %s\n' "$current_remote" >&2
     printf 'Expected: %s\n' "$EXPECTED_REMOTE" >&2
     exit 1
