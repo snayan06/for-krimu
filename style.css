@@ -17,7 +17,10 @@
   --sans: ui-rounded, "Avenir Next", Avenir, "Segoe UI", sans-serif;
 }
 
-* { box-sizing: border-box; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  color-scheme: only light;
+}
 [hidden] { display: none !important; }
 
 html {
@@ -39,6 +42,80 @@ body {
   font-family: var(--sans);
   overflow-x: hidden;
 }
+
+/* Some Android Custom Tabs ignore the document-level opt-out and force-dark
+   individual surfaces. This class is added when a dark preference or Chrome's
+   Auto Dark Theme is detected, restoring the designed palette element by element. */
+html.force-light-palette,
+html.force-light-palette body {
+  color: #4a3036 !important;
+  background-color: #fff9f2 !important;
+}
+
+html.force-light-palette body {
+  background-image:
+    radial-gradient(circle at 8% 8%, rgb(255 255 255 / 92%) 0 4%, transparent 18%),
+    radial-gradient(circle at 92% 86%, rgb(242 191 202 / 42%) 0 7%, transparent 24%),
+    linear-gradient(145deg, #fff9f2, #f9e7eb) !important;
+}
+
+html.force-light-palette .story-header,
+html.force-light-palette .sticker-note,
+html.force-light-palette .sticker-stamp,
+html.force-light-palette .memory-card,
+html.force-light-palette .reason-card,
+html.force-light-palette .wide-memory,
+html.force-light-palette .final-photo-wrap,
+html.force-light-palette .letter-collage,
+html.force-light-palette .song-link,
+html.force-light-palette .final-copy > .eyebrow,
+html.force-light-palette .letter-paper,
+html.force-light-palette .letter-toolbar,
+html.force-light-palette .modal-close {
+  color: #4a3036 !important;
+  background-color: #fffdf8 !important;
+}
+
+html.force-light-palette .story-header,
+html.force-light-palette .letter-paper,
+html.force-light-palette .letter-toolbar,
+html.force-light-palette .modal-close {
+  background-color: #fffaf3 !important;
+}
+
+html.force-light-palette .story-button,
+html.force-light-palette .letter-button,
+html.force-light-palette .reason-card.is-revealed {
+  color: #fffdf8 !important;
+  background-color: #914255 !important;
+}
+
+html.force-light-palette h1,
+html.force-light-palette h2,
+html.force-light-palette .memory-card span,
+html.force-light-palette .chapter-heading > p:last-child,
+html.force-light-palette .signature,
+html.force-light-palette .replay-button {
+  color: #4a3036 !important;
+}
+
+html.force-light-palette .eyebrow,
+html.force-light-palette h1 em,
+html.force-light-palette h2 em,
+html.force-light-palette .song-quote,
+html.force-light-palette .reason-prompt,
+html.force-light-palette .scribble,
+html.force-light-palette .letter-date,
+html.force-light-palette .letter-signoff,
+html.force-light-palette .signature strong {
+  color: #914255 !important;
+}
+
+html.force-light-palette .envelope-back { background-color: #e5a9b6 !important; }
+html.force-light-palette .envelope-back::before { background-color: #efbac5 !important; }
+html.force-light-palette .envelope-front { background-color: #d991a1 !important; }
+html.force-light-palette .envelope-front::after { background-color: #e8a5b3 !important; }
+html.force-light-palette img { filter: none !important; }
 
 button { font: inherit; }
 button:focus-visible { outline: 3px solid var(--rose-dark); outline-offset: 5px; }
@@ -157,21 +234,20 @@ img { display: block; max-width: 100%; }
 }
 .sticker-stamp small { font-size: 8px; font-weight: 400; letter-spacing: .15em; }
 
-.screen.is-active { animation: screen-in .7s cubic-bezier(.21,.7,.25,1) forwards; }
-.screen.is-leaving { animation: screen-out .32s ease forwards; }
+.screen.is-active { animation: screen-in .4s cubic-bezier(.21,.7,.25,1) forwards; }
+.screen.is-leaving { animation: screen-out .22s ease-in forwards; }
 
 .screen.is-active .intro-copy,
-.screen.is-active .chapter-heading { animation: story-piece-in .62s .08s both; }
+.screen.is-active .chapter-heading { animation: story-piece-in .44s both; }
 .screen.is-active .envelope-wrap,
 .screen.is-active .memory-stack,
-.screen.is-active .reason-grid,
-.screen.is-active .final-photo-wrap { animation: story-piece-in .72s .18s both; }
+.screen.is-active .final-photo-wrap { animation: story-piece-in .48s .05s both; }
 .screen.is-active > .story-button,
-.screen.is-active .final-copy { animation: story-piece-in .62s .32s both; }
-.reasons.is-active .reason-card { animation: card-bloom .55s both; }
-.reasons.is-active .reason-card:nth-child(2) { animation-delay: .08s; }
-.reasons.is-active .reason-card:nth-child(3) { animation-delay: .16s; }
-.reasons.is-active .reason-card:nth-child(4) { animation-delay: .24s; }
+.screen.is-active .final-copy { animation: story-piece-in .44s .1s both; }
+.reasons.is-active .reason-card { animation: card-bloom .42s both; }
+.reasons.is-active .reason-card:nth-child(2) { animation-delay: .05s; }
+.reasons.is-active .reason-card:nth-child(3) { animation-delay: .1s; }
+.reasons.is-active .reason-card:nth-child(4) { animation-delay: .15s; }
 
 .intro {
   display: grid;
@@ -326,7 +402,7 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
   background: var(--paper);
   box-shadow: var(--shadow);
   cursor: pointer;
-  transition: transform .5s cubic-bezier(.2,.8,.2,1), opacity .4s;
+  transition: transform .4s cubic-bezier(.2,.8,.2,1), opacity .32s;
 }
 
 .memory-card img {
@@ -352,7 +428,7 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
 .memory-card:nth-child(2) img { object-position: 50% 42%; }
 .memory-card:nth-child(3) img { object-position: 50% 45%; }
 .memory-card:nth-child(4) img { object-position: 50% 22%; }
-.memory-card.is-exiting { transform: translateY(-4%) rotate(3deg) scale(.94); opacity: 0; }
+.memory-card.is-exiting { transform: translateY(-4%) rotate(3deg) scale(.94); opacity: 0; pointer-events: none; }
 .story-button,
 .letter-button {
   display: flex;
@@ -388,7 +464,7 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
   box-shadow: 0 10px 25px rgb(91 54 63 / 8%);
   cursor: pointer;
   overflow: hidden;
-  transition: background .4s, transform .35s;
+  transition: background .3s, transform .3s;
 }
 
 .reason-card:nth-child(even) { margin-top: 28px; }
@@ -396,8 +472,8 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
 .reason-number { position: absolute; z-index: 2; top: 20px; left: 24px; color: var(--rose); font: italic 15px/1 var(--serif); }
 .reason-prompt,
 .reason-copy { grid-area: 1 / 1; }
-.reason-prompt { color: var(--rose-dark); font: italic 19px/1 var(--serif); transition: opacity .25s; }
-.reason-copy { max-width: 175px; padding: 0; opacity: 0; transform: translateY(8px); text-wrap: balance; font: 16px/1.42 var(--serif); transition: opacity .35s, transform .35s; }
+.reason-prompt { color: var(--rose-dark); font: italic 19px/1 var(--serif); transition: opacity .18s; }
+.reason-copy { max-width: 175px; padding: 0; opacity: 0; transform: translateY(8px); text-wrap: balance; font: 16px/1.42 var(--serif); transition: opacity .28s, transform .28s; }
 .reason-card.is-revealed { color: #fff9f5; background: var(--rose-dark); transform: translateY(-3px) rotate(-1deg); }
 .reason-card.is-revealed .reason-prompt { opacity: 0; }
 .reason-card.is-revealed .reason-copy { opacity: 1; transform: none; }
@@ -416,11 +492,11 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
 .wide-memory figcaption { max-width: 580px; margin: 20px auto 0; text-align: center; font: italic 16px/1.5 var(--serif); }
 
 .finale { display: grid; align-items: center; align-content: center; gap: 46px; padding-top: 96px; padding-bottom: 78px; text-align: center; }
-.final-photo-wrap { position: relative; width: min(82vw, 420px); margin: 0 auto; padding: 11px 11px 44px; background: var(--paper); box-shadow: var(--shadow); transform: rotate(2deg); transition: opacity .38s ease, filter .38s ease, transform .38s ease; }
+.final-photo-wrap { position: relative; width: min(82vw, 420px); margin: 0 auto; padding: 11px 11px 44px; background: var(--paper); box-shadow: var(--shadow); transform: rotate(2deg); transition: opacity .24s ease, transform .24s ease; }
 .final-photo-wrap img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center; }
 .tape { position: absolute; z-index: 2; top: -15px; left: 50%; width: 94px; height: 31px; background: rgb(219 203 174 / 70%); transform: translateX(-50%) rotate(-3deg); }
 .scribble { position: absolute; right: -14px; bottom: -27px; color: var(--rose); font: 76px/1 var(--serif); transform: rotate(12deg); }
-.final-copy { max-width: 620px; margin: 0 auto; transition: opacity .38s ease, translate .38s ease; }
+.final-copy { max-width: 620px; margin: 0 auto; transition: opacity .24s ease, translate .24s ease; }
 .final-copy > .eyebrow {
   display: inline-flex;
   padding: 7px 12px;
@@ -428,7 +504,7 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
   border-radius: 999px;
   background: rgb(255 253 248 / 58%);
 }
-.finale.is-opening-letter .final-photo-wrap { opacity: .5; filter: blur(1.5px); transform: rotate(0) scale(.95); }
+.finale.is-opening-letter .final-photo-wrap { opacity: .5; transform: rotate(0) scale(.95); }
 .finale.is-opening-letter .final-copy { opacity: .55; translate: 0 8px; }
 .final-copy > .song-quote {
   max-width: 320px;
@@ -460,7 +536,7 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
   background: var(--rose-dark);
   animation: soft-pulse 2.8s ease-in-out infinite;
 }
-.letter-button:disabled { cursor: wait; }
+.letter-button:disabled { cursor: wait; animation: none; }
 .replay-button {
   margin-top: 17px;
   padding: 7px 10px;
@@ -488,8 +564,8 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
 
 .letter-modal::backdrop { background: rgb(57 30 37 / 68%); backdrop-filter: blur(5px); }
 .letter-paper { position: relative; max-height: 88dvh; padding: 0 28px 28px; border: 1px solid rgb(189 96 117 / 24%); background: var(--cream); box-shadow: 0 30px 90px rgb(44 20 27 / 35%); overflow-y: auto; }
-.letter-modal[open] .letter-paper { animation: letter-unfold .56s cubic-bezier(.16,.8,.24,1) both; transform-origin: center top; }
-.letter-modal[open] .letter-collage { animation: letter-photo-in .68s .22s cubic-bezier(.2,.75,.25,1) both; }
+.letter-modal[open] .letter-paper { animation: letter-unfold .42s cubic-bezier(.16,.8,.24,1) both; transform-origin: center top; }
+.letter-modal[open] .letter-collage { animation: letter-photo-in .48s .12s cubic-bezier(.2,.75,.25,1) both; }
 .letter-paper::before { content: none; }
 .letter-toolbar {
   position: sticky;
@@ -558,8 +634,8 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
 
 .noscript { position: fixed; inset: auto 16px 16px; z-index: 200; padding: 12px; color: white; background: var(--rose-dark); text-align: center; }
 
-@keyframes screen-in { to { opacity: 1; transform: none; } }
-@keyframes screen-out { to { opacity: 0; transform: translateY(-15px); } }
+@keyframes screen-in { from { opacity: .16; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes screen-out { to { opacity: 0; transform: translateY(-8px); } }
 @keyframes story-piece-in { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
 @keyframes card-bloom { from { opacity: 0; translate: 0 16px; scale: .96; } to { opacity: 1; translate: 0 0; scale: 1; } }
 @keyframes bob { 50% { transform: translateY(-5px); } }

@@ -1,6 +1,22 @@
 (() => {
   "use strict";
 
+  const darkPreference = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function lockDesignedPalette() {
+    const detector = document.createElement("div");
+    detector.hidden = true;
+    detector.style.backgroundColor = "canvas";
+    detector.style.colorScheme = "light";
+    document.body.appendChild(detector);
+    const autoDarkActive = getComputedStyle(detector).backgroundColor !== "rgb(255, 255, 255)";
+    detector.remove();
+    document.documentElement.classList.toggle("force-light-palette", darkPreference.matches || autoDarkActive);
+  }
+
+  lockDesignedPalette();
+  darkPreference.addEventListener?.("change", lockDesignedPalette);
+
   const screens = [...document.querySelectorAll("[data-screen]")];
   const dots = [...document.querySelectorAll(".progress-dot")];
   const progress = document.querySelector(".progress");
@@ -22,11 +38,11 @@
       currentScreen = index;
       dots.forEach((dot, dotIndex) => dot.classList.toggle("is-current", dotIndex === index));
       progress.setAttribute("aria-valuenow", String(index + 1));
-      window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+      window.scrollTo({ top: 0, behavior: "auto" });
       incoming.querySelector("h1, h2")?.focus({ preventScroll: true });
     };
 
-    reducedMotion ? change() : window.setTimeout(change, 300);
+    reducedMotion ? change() : window.setTimeout(change, 180);
   }
 
   const openStory = document.querySelector("#openStory");
@@ -34,7 +50,7 @@
     if (currentScreen !== 0 || openStory.classList.contains("is-open")) return;
     openStory.classList.add("is-open");
     burstHearts(8);
-    window.setTimeout(() => showScreen(1), reducedMotion ? 20 : 950);
+    window.setTimeout(() => showScreen(1), reducedMotion ? 20 : 780);
   });
 
   document.querySelectorAll("[data-next]").forEach((button) => {
@@ -99,7 +115,7 @@
       openLetter.disabled = false;
       burstHearts(10);
       launchConfetti();
-    }, reducedMotion ? 20 : 360);
+    }, reducedMotion ? 20 : 230);
   });
   closeLetter.addEventListener("click", () => {
     finale.classList.remove("is-opening-letter");
