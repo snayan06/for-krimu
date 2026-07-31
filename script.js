@@ -12,6 +12,7 @@
     const incoming = screens[index];
     if (!incoming || index === currentScreen) return;
 
+    sprinkleTransition(6);
     outgoing.classList.add("is-leaving");
     const change = () => {
       outgoing.hidden = true;
@@ -47,6 +48,7 @@
     card.addEventListener("click", () => {
       if (card !== memoryCards[memoryIndex]) return;
       if (memoryIndex < memoryCards.length - 1) {
+        floatOneHeart(card);
         card.classList.add("is-exiting");
         card.setAttribute("aria-hidden", "true");
         card.inert = true;
@@ -81,22 +83,39 @@
   });
 
   const letterModal = document.querySelector("#letterModal");
+  const finale = document.querySelector(".finale");
   const openLetter = document.querySelector("#openLetter");
   const closeLetter = document.querySelector("#closeLetter");
   const replayStory = document.querySelector("#replayStory");
 
   openLetter.addEventListener("click", () => {
-    letterModal.showModal();
-    burstHearts(24);
-    launchConfetti();
+    if (openLetter.disabled) return;
+    openLetter.disabled = true;
+    finale.classList.add("is-opening-letter");
+    sprinkleTransition(8);
+    window.setTimeout(() => {
+      letterModal.showModal();
+      finale.classList.remove("is-opening-letter");
+      openLetter.disabled = false;
+      burstHearts(10);
+      launchConfetti();
+    }, reducedMotion ? 20 : 360);
   });
-  closeLetter.addEventListener("click", () => letterModal.close());
+  closeLetter.addEventListener("click", () => {
+    finale.classList.remove("is-opening-letter");
+    letterModal.close();
+  });
   letterModal.addEventListener("click", (event) => {
-    if (event.target === letterModal) letterModal.close();
+    if (event.target === letterModal) {
+      finale.classList.remove("is-opening-letter");
+      letterModal.close();
+    }
   });
 
   replayStory.addEventListener("click", () => {
     if (letterModal.open) letterModal.close();
+    finale.classList.remove("is-opening-letter");
+    openLetter.disabled = false;
     openStory.classList.remove("is-open");
     memoryCards.forEach((card, index) => {
       card.classList.remove("is-exiting");
@@ -152,7 +171,7 @@
   function launchConfetti() {
     if (reducedMotion) return;
     const colors = ["#bd6075", "#e8a5b3", "#c9d2bd", "#f4cf8d", "#fffaf3"];
-    for (let index = 0; index < 55; index += 1) {
+    for (let index = 0; index < 28; index += 1) {
       const piece = document.createElement("i");
       piece.className = "confetti-piece";
       piece.style.left = `${Math.random() * 100}%`;
@@ -166,7 +185,25 @@
     }
   }
 
+  function sprinkleTransition(amount) {
+    if (reducedMotion) return;
+    const symbols = ["♡", "✦", "⋆"];
+    for (let index = 0; index < amount; index += 1) {
+      const spark = document.createElement("span");
+      spark.className = "transition-spark";
+      spark.textContent = symbols[index % symbols.length];
+      spark.style.left = `${20 + Math.random() * 60}%`;
+      spark.style.top = `${25 + Math.random() * 50}%`;
+      spark.style.fontSize = `${14 + Math.random() * 11}px`;
+      spark.style.setProperty("--drift-x", `${(Math.random() - .5) * 90}px`);
+      spark.style.setProperty("--drift-y", `${-18 - Math.random() * 42}px`);
+      spark.style.setProperty("--delay", `${index * .035}s`);
+      document.body.append(spark);
+      window.setTimeout(() => spark.remove(), 1200);
+    }
+  }
+
   if (!reducedMotion) {
-    window.setInterval(() => burstHearts(1), 2800);
+    window.setInterval(() => burstHearts(1), 4200);
   }
 })();
