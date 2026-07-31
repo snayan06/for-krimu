@@ -20,11 +20,11 @@
 
   <header class="story-header">
     <p class="mini-mark">K <span>♡</span> N</p>
-    <div class="progress" aria-label="Story progress">
-      <span class="progress-dot is-current"></span>
-      <span class="progress-dot"></span>
-      <span class="progress-dot"></span>
-      <span class="progress-dot"></span>
+    <div class="progress" role="progressbar" aria-label="Story progress" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
+      <span class="progress-dot is-current" aria-hidden="true"></span>
+      <span class="progress-dot" aria-hidden="true"></span>
+      <span class="progress-dot" aria-hidden="true"></span>
+      <span class="progress-dot" aria-hidden="true"></span>
     </div>
   </header>
 
@@ -32,9 +32,9 @@
     <section class="screen intro is-active" data-screen="0" aria-labelledby="intro-title">
       <span class="scrap-sticker sticker-bow" aria-hidden="true">୨୧</span>
       <div class="intro-copy">
-        <p class="eyebrow">A tiny love note for</p>
-        <h1 id="intro-title" tabindex="-1">My favourite girl,<br><em>Krimu</em></h1>
-        <p class="intro-note">I made you a little something for Girlfriend's Day...</p>
+        <p class="eyebrow">A little corner of the internet for</p>
+        <h1 id="intro-title" tabindex="-1">Only for you,<br><em>Krimu</em> ♡</h1>
+        <p class="intro-note">Made with our memories—and a lot of love.</p>
       </div>
 
       <div class="envelope-wrap">
@@ -53,71 +53,70 @@
     <section class="screen chapter" data-screen="1" aria-labelledby="memories-title" hidden>
       <span class="scrap-sticker sticker-note" aria-hidden="true">love lives here ♡</span>
       <div class="chapter-heading">
-        <p class="eyebrow">Chapter one</p>
-        <h2 id="memories-title" tabindex="-1">A few little moments<br>that feel like <em>home</em></h2>
-        <p>Tap each photo — every version of us is my favourite.</p>
+        <p class="eyebrow">Chapter one · Us</p>
+        <h2 id="memories-title" tabindex="-1">The moments I keep<br>coming back <em>to</em></h2>
+        <p>Tap through them—each one holds a different kind of us.</p>
       </div>
 
       <div class="memory-stack" id="memoryStack">
-        <button class="memory-card tilt-left is-front" type="button" data-caption="My favourite place is right next to you ♡">
+        <button class="memory-card tilt-left is-front" type="button">
           <img src="images/photos/safe-place.jpg" alt="Krimu resting on Nayan's shoulder" decoding="async">
-          <span>our everyday magic</span>
+          <span>safe with you ♡</span>
         </button>
-        <button class="memory-card tilt-right" type="button" data-caption="Udaipur was beautiful, but you were my favourite view.">
+        <button class="memory-card tilt-right" type="button" tabindex="-1" aria-hidden="true" inert>
           <img src="images/photos/udaipur-smiles.jpg" alt="Krimu and Nayan smiling together in Udaipur" decoding="async">
-          <span>the pretty days</span>
+          <span>Udaipur, us, always</span>
         </button>
-        <button class="memory-card tilt-left" type="button" data-caption="This smile? It is always because of you.">
+        <button class="memory-card tilt-left" type="button" tabindex="-1" aria-hidden="true" inert>
           <img src="images/photos/car-smiles.jpg" alt="Krimu and Nayan smiling together in the car" decoding="async">
-          <span>just us being us</span>
+          <span>my favourite co-passenger</span>
         </button>
-        <button class="memory-card tilt-right" type="button" data-caption="One hand to hold, one lifetime to go.">
+        <button class="memory-card tilt-right" type="button" tabindex="-1" aria-hidden="true" inert>
           <img src="images/photos/soft-look.jpg" alt="Nayan looking fondly at Krimu" decoding="async">
-          <span>my forever date</span>
+          <span>caught looking at you</span>
         </button>
       </div>
-      <p class="memory-caption" id="memoryCaption" aria-live="polite">My favourite place is right next to you ♡</p>
 
-      <button class="story-button" type="button" data-next>keep going <span aria-hidden="true">→</span></button>
+      <button class="story-button" type="button" data-next>there's more to you <span aria-hidden="true">→</span></button>
     </section>
 
     <section class="screen chapter reasons" data-screen="2" aria-labelledby="reasons-title" hidden>
       <span class="scrap-sticker sticker-xoxo" aria-hidden="true">xoxo</span>
       <div class="chapter-heading">
-        <p class="eyebrow">Chapter two</p>
-        <h2 id="reasons-title" tabindex="-1">Things I <em>adore</em><br>about you</h2>
-        <p>Little reminders, in case you ever forget.</p>
+        <p class="eyebrow">Chapter two · Krimu</p>
+        <h2 id="reasons-title" tabindex="-1">The little things<br>I <em>love</em> about you</h2>
+        <p>Four of the many. Tap to open each one.</p>
       </div>
 
       <div class="reason-grid">
         <button class="reason-card" type="button" aria-pressed="false">
           <span class="reason-number">01</span>
-          <span class="reason-prompt">tap me</span>
-          <span class="reason-copy">The way your smile makes everything feel lighter.</span>
+          <span class="reason-prompt">your smile</span>
+          <span class="reason-copy" aria-hidden="true">Your smile changes the mood before you say a word.</span>
         </button>
         <button class="reason-card" type="button" aria-pressed="false">
           <span class="reason-number">02</span>
-          <span class="reason-prompt">a secret</span>
-          <span class="reason-copy">How I can be completely myself when I am with you.</span>
+          <span class="reason-prompt">your ease</span>
+          <span class="reason-copy" aria-hidden="true">With you, I never have to be anyone but myself.</span>
         </button>
         <button class="reason-card" type="button" aria-pressed="false">
           <span class="reason-number">03</span>
-          <span class="reason-prompt">for you</span>
-          <span class="reason-copy">Your soft heart, your strength, and all the tiny ways you care.</span>
+          <span class="reason-prompt">your heart</span>
+          <span class="reason-copy" aria-hidden="true">You make softness feel strong—and strength feel gentle.</span>
         </button>
         <button class="reason-card" type="button" aria-pressed="false">
           <span class="reason-number">04</span>
-          <span class="reason-prompt">one more</span>
-          <span class="reason-copy">That every plan sounds better when it has “with Krimu” at the end.</span>
+          <span class="reason-prompt">our everyday</span>
+          <span class="reason-copy" aria-hidden="true">Even ordinary plans feel special when they're with you.</span>
         </button>
       </div>
 
       <figure class="wide-memory">
         <img src="images/photos/flowers.jpg" alt="Krimu and Nayan standing together beside flowers" decoding="async">
-        <figcaption>You are my person. On the big days, the quiet days, and every day in between.</figcaption>
+        <figcaption>Gordhana with you—one of those days I'd happily live again.</figcaption>
       </figure>
 
-      <button class="story-button" type="button" data-next>one last thing <span aria-hidden="true">♡</span></button>
+      <button class="story-button" type="button" data-next>one thing left <span aria-hidden="true">♡</span></button>
     </section>
 
     <section class="screen finale" data-screen="3" aria-labelledby="finale-title" hidden>
@@ -129,14 +128,14 @@
       </div>
 
       <div class="final-copy">
-        <p class="eyebrow">Happy Girlfriend's Day</p>
-        <h2 id="finale-title" tabindex="-1">Life is sweeter<br>with <em>you</em> in it.</h2>
-        <p>Today is about celebrating you — but loving you is my favourite thing every day.</p>
+        <p class="eyebrow">Happy Girlfriend's Day, Krimu</p>
+        <h2 id="finale-title" tabindex="-1">In every story,<br>I'd still <em>choose you.</em></h2>
+        <p>For the adventures, the quiet comfort, the ridiculous laughs—and everything we haven't lived yet.</p>
         <button class="letter-button" id="openLetter" type="button">
-          <span aria-hidden="true">✉</span> open my letter
+          <span aria-hidden="true">✉</span> read my letter
         </button>
-        <p class="signature">Always yours,<br><strong>Nayan</strong> ♡</p>
-        <button class="replay-button" id="replayStory" type="button">replay our little story ↺</button>
+        <p class="signature">All my love,<br><strong>Nayan</strong> ♡</p>
+        <button class="replay-button" id="replayStory" type="button">start again ↺</button>
       </div>
     </section>
   </main>
@@ -144,13 +143,13 @@
   <dialog class="letter-modal" id="letterModal" aria-labelledby="letter-title">
     <div class="letter-paper">
       <button class="modal-close" id="closeLetter" type="button" aria-label="Close letter">×</button>
-      <p class="letter-date">Girlfriend's Day · just for you</p>
-      <h2 id="letter-title">My dearest Krimu,</h2>
-      <p>Thank you for being the person who turns my ordinary moments into the ones I want to remember.</p>
-      <p>I love our silly laughs, our little adventures, our quiet comfort, and the beautiful life we keep creating in between.</p>
-      <p>No matter how many photos we take, my favourite memory will always be the feeling of being beside you.</p>
-      <p>Happy Girlfriend's Day to the girl I would choose in every story, every time.</p>
-      <p class="letter-signoff">I love you, Krimu.<br><strong>— Nayan</strong></p>
+      <p class="letter-date">Girlfriend's Day · 1 August</p>
+      <h2 id="letter-title">Krimu,</h2>
+      <p>From our Udaipur smiles and long drives to the quiet moments when you fall asleep on my shoulder, you've made the ordinary parts of my life the ones I treasure most.</p>
+      <p>I love how easy it is to be myself with you. I love your softness, your strength, and the care you put into the smallest things.</p>
+      <p>I don't need every day to be perfect. I only want more days that feel like us—laughing, wandering, resting, and choosing each other.</p>
+      <p>Happy Girlfriend's Day, Krimu. I'm very lucky I get to love you.</p>
+      <p class="letter-signoff">I love you. Always.<br><strong>— Nayan</strong></p>
       <img class="letter-collage" src="images/photos/letter.jpg" alt="Krimu and Nayan dressed in pink and holding each other" decoding="async">
     </div>
   </dialog>

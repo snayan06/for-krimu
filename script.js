@@ -3,6 +3,7 @@
 
   const screens = [...document.querySelectorAll("[data-screen]")];
   const dots = [...document.querySelectorAll(".progress-dot")];
+  const progress = document.querySelector(".progress");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let currentScreen = 0;
 
@@ -19,6 +20,7 @@
       incoming.classList.add("is-active");
       currentScreen = index;
       dots.forEach((dot, dotIndex) => dot.classList.toggle("is-current", dotIndex === index));
+      progress.setAttribute("aria-valuenow", String(index + 1));
       window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
       incoming.querySelector("h1, h2")?.focus({ preventScroll: true });
     };
@@ -30,7 +32,7 @@
   openStory.addEventListener("click", () => {
     if (currentScreen !== 0 || openStory.classList.contains("is-open")) return;
     openStory.classList.add("is-open");
-    burstHearts(14);
+    burstHearts(8);
     window.setTimeout(() => showScreen(1), reducedMotion ? 20 : 950);
   });
 
@@ -39,26 +41,31 @@
   });
 
   const memoryCards = [...document.querySelectorAll(".memory-card")];
-  const memoryCaption = document.querySelector("#memoryCaption");
   let memoryIndex = 0;
 
   memoryCards.forEach((card) => {
     card.addEventListener("click", () => {
       if (card !== memoryCards[memoryIndex]) return;
-      memoryCaption.textContent = card.dataset.caption;
       if (memoryIndex < memoryCards.length - 1) {
         card.classList.add("is-exiting");
         card.setAttribute("aria-hidden", "true");
+        card.inert = true;
         card.tabIndex = -1;
         memoryIndex += 1;
+        memoryCards[memoryIndex].tabIndex = 0;
+        memoryCards[memoryIndex].inert = false;
+        memoryCards[memoryIndex].removeAttribute("aria-hidden");
         memoryCards[memoryIndex].focus({ preventScroll: true });
       } else {
-        memoryCards.forEach((item) => {
+        memoryCards.forEach((item, index) => {
           item.classList.remove("is-exiting");
-          item.removeAttribute("aria-hidden");
-          item.tabIndex = 0;
+          item.tabIndex = index === 0 ? 0 : -1;
+          item.inert = index !== 0;
+          if (index === 0) item.removeAttribute("aria-hidden");
+          else item.setAttribute("aria-hidden", "true");
         });
         memoryIndex = 0;
+        memoryCards[0].focus({ preventScroll: true });
       }
     });
   });
@@ -67,6 +74,8 @@
     card.addEventListener("click", () => {
       const isRevealed = card.classList.toggle("is-revealed");
       card.setAttribute("aria-pressed", String(isRevealed));
+      card.querySelector(".reason-prompt").setAttribute("aria-hidden", String(isRevealed));
+      card.querySelector(".reason-copy").setAttribute("aria-hidden", String(!isRevealed));
       if (isRevealed) floatOneHeart(card);
     });
   });
@@ -89,16 +98,19 @@
   replayStory.addEventListener("click", () => {
     if (letterModal.open) letterModal.close();
     openStory.classList.remove("is-open");
-    memoryCards.forEach((card) => {
+    memoryCards.forEach((card, index) => {
       card.classList.remove("is-exiting");
-      card.removeAttribute("aria-hidden");
-      card.tabIndex = 0;
+      card.tabIndex = index === 0 ? 0 : -1;
+      card.inert = index !== 0;
+      if (index === 0) card.removeAttribute("aria-hidden");
+      else card.setAttribute("aria-hidden", "true");
     });
     memoryIndex = 0;
-    memoryCaption.textContent = "My favourite place is right next to you ♡";
     document.querySelectorAll(".reason-card").forEach((card) => {
       card.classList.remove("is-revealed");
       card.setAttribute("aria-pressed", "false");
+      card.querySelector(".reason-prompt").setAttribute("aria-hidden", "false");
+      card.querySelector(".reason-copy").setAttribute("aria-hidden", "true");
     });
     showScreen(0);
     burstHearts(10);
@@ -125,7 +137,9 @@
         const heart = document.createElement("span");
         heart.className = "floating-heart";
         heart.textContent = index % 3 === 0 ? "♥" : "♡";
-        heart.style.left = `${15 + Math.random() * 70}%`;
+        heart.style.left = index % 2 === 0
+          ? `${4 + Math.random() * 13}%`
+          : `${83 + Math.random() * 13}%`;
         heart.style.fontSize = `${15 + Math.random() * 24}px`;
         heart.style.setProperty("--x-start", `${(Math.random() - .5) * 80}px`);
         heart.style.setProperty("--x-end", `${(Math.random() - .5) * 190}px`);
