@@ -331,9 +331,9 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
 .memory-card:nth-child(2) { z-index: 3; transform: rotate(1.4deg) translate(4px, 4px); }
 .memory-card:nth-child(3) { z-index: 2; transform: rotate(-1.6deg) translate(-4px, 7px); }
 .memory-card:nth-child(4) { z-index: 1; transform: rotate(.9deg) translate(4px, 9px); }
-.memory-card:nth-child(1) img { object-position: 50% 45%; }
+.memory-card:nth-child(1) img { object-position: 50% 50%; }
 .memory-card:nth-child(2) img { object-position: 50% 42%; }
-.memory-card:nth-child(3) img { object-position: 55% 42%; }
+.memory-card:nth-child(3) img { object-position: 50% 45%; }
 .memory-card:nth-child(4) img { object-position: 50% 22%; }
 .memory-card.is-exiting { transform: translateY(-4%) rotate(3deg) scale(.94); opacity: 0; }
 .story-button,
