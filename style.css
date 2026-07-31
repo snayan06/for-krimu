@@ -438,10 +438,10 @@ h1 em, h2 em { color: var(--rose); font-weight: 400; }
 }
 
 .letter-modal::backdrop { background: rgb(57 30 37 / 68%); backdrop-filter: blur(5px); }
-.letter-paper { position: relative; max-height: 88dvh; padding: 46px 28px 28px; background: var(--cream); box-shadow: 0 30px 90px rgb(44 20 27 / 35%); overflow-y: auto; }
+.letter-paper { position: relative; max-height: 88dvh; padding: 46px 28px 28px; border: 1px solid rgb(189 96 117 / 24%); background: var(--cream); box-shadow: 0 30px 90px rgb(44 20 27 / 35%); overflow-y: auto; }
 .letter-modal[open] .letter-paper { animation: letter-unfold .56s cubic-bezier(.16,.8,.24,1) both; transform-origin: center top; }
 .letter-modal[open] .letter-collage { animation: letter-photo-in .68s .22s cubic-bezier(.2,.75,.25,1) both; }
-.letter-paper::before { content: ""; position: absolute; inset: 14px; border: 1px solid rgb(189 96 117 / 24%); pointer-events: none; }
+.letter-paper::before { content: none; }
 .modal-close {
   position: sticky;
   z-index: 3;
